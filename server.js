@@ -1,17 +1,19 @@
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const connectDB = require('./config/db');
 
-const app = express(); // প্রথমে app তৈরি করতে হবে
+const app = express();
 const PORT = process.env.PORT || 5000;
 
-connectDB(process.env.MONGO_URI);
+// 🔥 Direct Mongo URI
+const MONGO_URI = "mongodb+srv://bloodServer:kJQIoEQB38a2951S@cluster0.xjpgufh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+connectDB(MONGO_URI);
 
 const allowedOrigins = [
   "http://localhost:3000",             // লোকালি চলবে
-  "https://bloodnishiralo.netlify.app" // Netlify URL (শেষে `/` থাকবে না)
+  "https://bloodnishiralo.netlify.app" // Netlify URL
 ];
 
 app.use(
