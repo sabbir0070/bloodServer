@@ -31,7 +31,8 @@ router.post('/', upload.single('avatar'), async (req, res) => {
       address,
       phone,
       lastDonation,
-      donationsCount
+      donationsCount,
+ medicalConditions
     } = req.body;
 
     const avatarPath = req.file ? `/uploads/${req.file.filename}` : null;
@@ -48,7 +49,8 @@ router.post('/', upload.single('avatar'), async (req, res) => {
       dob,
       lastDonation: lastDonation ? new Date(lastDonation) : null,
       donationsCount: donationsCount ? Number(donationsCount) : 0,
-      avatar: avatarPath
+      avatar: avatarPath,
+ medicalConditions
     });
 
     await donor.save();
